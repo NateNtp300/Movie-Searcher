@@ -1,0 +1,151 @@
+table{
+  width: 100%;
+}
+
+.searchBar{
+    background-image: url('searchGlass.png');
+    background-repeat: no-repeat;
+    position: left;
+
+    background-size: 25px;
+    background-position: left;
+    background-position-x: 5px;
+    padding: 10px 20px 10px 40px;
+
+
+    margin-left: 630px;
+
+    text-align: left;
+    font-size: 16px;
+    width: 300px;
+
+
+}
+
+.headerLabel{
+
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.searchButton{
+    margin-left: 20px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.th2{
+    padding: 10px 70px 0px 5px;
+
+}
+
+div.accountCreate{
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    margin-right: 40%;
+    margin-left: 40%;
+    background-color: #0099cc;
+    border-radius: 25px;
+
+}
+
+div.login{
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    margin-right: 30%;
+    margin-left: 30%;
+    color: white;
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    font-size: 100%;
+    background-color:#0099cc;
+    border-radius: 25px;
+}
+
+div.movieDisplayContainer{
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 20%;
+    color: black;
+    
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    font-size: 100%;
+    border: 2px;
+    border-color: #0099cc;
+    background-color: #0099cc;
+    border-radius: 25px;
+}
+
+div.loginMid{
+    padding-top: 5%;
+}
+
+div.movieDisplayMid{
+    padding-top: 5%;
+    background-color: white;
+    border-radius: 25px;
+}
+
+
+.loginTop{
+    background-color: #0099cc;
+}
+
+.th1{
+  color: white;
+  font-size: 300%;
+   padding: 1%;
+   text-align: center;
+   size: 50%;
+   cursor: pointer;
+
+
+}
+
+.prompt{
+  font-size: 200%;
+}
+
+.menuBar{
+  font-size: 100%;
+  color: white;
+  cursor: pointer;
+}
+
+.space{
+  width: 10%;
+}
+
+.topPads{
+  padding-top: 2%;
+}
+
+.centered{
+  text-align: center;
+}
+
+.bigFont{
+  font-size: 200%;
+}
+
+.tableSizing{
+  width: 20%;
+}
+
+.backgroundImage{
+  background-image: url('movieCollage.jpg');
+  background-size: cover;
+}
+
+.mySlides {display:none;}

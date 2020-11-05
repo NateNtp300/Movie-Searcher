@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"/>
+  <script type="text/javascript" src="scripts.js"></script>
+
+
+    <title>Login</title>
+    <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+ <!-- Latest compiled JavaScript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+  <div class="backgroundImage">
+  <form action="index.html?" method="post">
+    <div class = "loginTop">
+  		<table class = "table1">
+        <tr>
+          <td>
+            <label class="th1" onclick="location.href='index.html';">MovieSearcher.com</label>
+          </td>
+          <td class="space">
+            <label class="menuBar" onclick="location.href='createAccount.html';">Create Account</label>
+          </td>
+        </tr>
+  		</table>
+  	</div>
+    <div class="form-group">
+  	<div class = "login">
+      	<h1><strong>Login Credentials</strong></h1>
+
+
+        <div class="loginMid">
+        <div id = "error"></div>
+        <form  action = "/" method = "GET" class = "form1" id = "form1">
+
+      		  <label>Username:</label><br>
+      		  <input type="text" class="form-control" placeholder="Enter Username" id="username" name="username" required><br>
+      		  <label>Password:</label><br>
+      		  <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" required><br>
+      	  	<p> </p>
+      		  <button type="submit" class="btn btn-primary btn-block"  onclick= "nextPage()">Login</button>
+            <p> </p>
+
+        </form>
+
+      		<p>Not a member? <a href="createAccount.html">Click here to create a profile</a>.</p>
+          <p> </p>
+	     </div>
+     </div>
+    </div>
+    <br><br>
+  </div>
+  <hr>
+  <footer class="centered">
+    <p>Jacob Donlan and Nathan Phillips, Copyright &copy; 2020 - IT353 - Web Development Technologies </p>
+    </p>
+      <script>
+          document.write("Last Modified: "+ document.lastModified);
+       </script>
+  <footer>
+</form>
+<script type="text/javascript">
+  var resetValue = "";
+  localStorage.setItem("username", resetValue);
+
+  function nextPage(){
+    //passes username to next page
+    var username = document.getElementById("username").value.trim();
+    var password = document.getElementById("password").value.trim();
+    localStorage.setItem("username", username);
+
+
+
+    if(username.value == null || password.value == null){
+      //alert("must fill out username  and password field");
+      //e.preventDefault();
+
+    }
+
+    else{
+      window.location.href="index.html";
+    }
+
+
+
+
+
+/*
+          const password = document.getElementById('password');
+          const form1 = document.getElementById('form1');
+          const errorElement = document.getElementById('error');
+
+      form1.addEventListener('submit', (e) =>{
+        let message = [];
+        if(username.value === '' || username.value == null){
+             messages.push('username is required');
+         }
+
+        if(messages.length > 0){
+          e.preventDefault();
+          errorElement.innerText = messages.join(', ');
+         }
+           });
+*/
+
+        }
+
+
+</script>
+</body>
+</html>

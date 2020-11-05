@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"/>
+	<title>Create Account</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <div class="backgroundImage">
+  <form action="login.html?" method="post">
+  <div class = "loginTop">
+    <table class = "table1">
+      <!--<th class = "th1"><a href = "index.html">Home</a></th>-->
+      <tr>
+        <td>
+          <label class="th1" onclick="location.href='index2.html';">MovieSearcher.com</label>
+        </td>
+        <td class="space">
+          <label class="menuBar" onclick="location.href='login.html';">Login</label>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="form-group">
+    <div class = "login">
+        <h3>Sign up with email.</h3>
+
+
+        <div class="loginMid">
+          <div id = "error"></div>
+          <form action = "/" method = "GET" class = "form1" id = "form1">
+             <label>Valid Email:</label><br>
+              <input type="text" class="form-control" placeholder="Email" id = "email" required><br>
+             <label>New Username:</label><br>
+              <input type="text" class="form-control" placeholder="Username" id = "username2" required><br>
+             <label>New Password:</label><br>
+             <input type="password" class="form-control" placeholder="Password" id = "password2" required><br>
+             <p> </p>
+              <label><input type="checkbox" value=""> Email me new updates and information.</label>
+      	    	<p> </p>
+      		    <button type="submit" class="btn btn-primary btn-block" onclick= "loginPage()">Create New Profile</button>
+      	    	<p> </p>
+      	    	<p>Already a member? <a href="login.html">Click here to login</a></p>
+      	    	<p> </p>
+          </form>
+
+
+        </div>
+    </div>
+    <br><br>
+	</div>
+</div>
+    <hr>
+    <footer class="centered">
+      <p>Jacob Donlan and Nathan Phillips, Copyright &copy; 2020 - IT353 - Web Development Technologies </p>
+
+
+        <script>
+            document.write("Last Modified: "+ document.lastModified);
+         </script>
+         </footer>
+         </form>
+         <script type = "text/javascript">
+
+          function loginPage(){
+            var username2 = document.getElementById("username2").value.trim();
+            var password2 = document.getElementById("password2").value.trim();
+            var email = document.getElementById("email").value.trim();
+           // localStorage.setItem("username2", username2);
+
+                 if(username2.value == null || password2.value == null || email.value == null){
+                    //alert("must fill out username, email, and password field");
+                     //e.preventDefault();
+
+                  }
+
+                 else{
+                  window.location.href="login.html"
+                 }
+          }
+         </script>
+    <footer>
+</body>
+</html>

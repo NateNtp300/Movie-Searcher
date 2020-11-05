@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieSearcher</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>MovieSearcher</title>
+  </head>
+  <body>
+    <div class="backgroundImage">
+      <div class = "loginTop">
+    		<table class = "table1">
+          <tr>
+            <td>
+              <label class="th1" onclick="location.href='index.html';">MovieSearcher</label>
+            </td>
+            <td class="space">
+              <label id="user"></label>
+            </td>
+            <td class="space">
+              <label class="menuBar" onclick="location.href='login.html';">Login/Logout</label>
+            </td>
+            <td class="space">
+              <label class="menuBar" onclick="location.href='createAccount.html';">Create Account</label>
+            </td>
+          </tr>
+    		</table>
+    	</div>
+  <div id="view">
+    <div class="form-group">
+      <div class = "login">
+        	<h3 class="prompt">Search movie by title:</h3>
+          <div class="loginMid">
+            <input class="form-control" id="qurybox" onkeyup="getImage(document.getElementById('qurybox').value)" placeholder="Enter movie title here..."><br>
+            <button type="button" class="btn btn-primary btn-block" name="get_movie" id="get_movie" onclick="getanswer(document.getElementById('qurybox').value)">Movie Information</button><br><br>
+            <!-- <button type="button" class="btn btn-primary btn-block" name="get_movie" id="get_movie" onclick="getanswer(document.getElementById('qurybox').value)" data-toggle="modal" data-target="#movieWindow">Movie Information</button><br><br> -->
+            <div id="imagePeak"></div>
+          </div>
+      </div>
+      <br>
+      <br>
+      <div id="answer"> </div>
+    </div>
+  </div>
+  <br><br>
+
+    <div id="reviewWindow" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <label class="bigFont">Add Review</label>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <label>Select rating: </label>
+            <select class="form-control" id="rating" name="rating">
+              <option selected>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select><br>
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment" name="comment"></textarea><br>
+            <button type="button" class="btn btn-primary btn-block"  onclick="injectorReview()" name="reviewSubmit" id="reviewSubmit" data-dismiss="modal">Submit</button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <hr>
+    <footer class="centered">
+      <p>Jacob Donlan and Nathan Phillips, Copyright &copy; 2020 - IT353 - Web Development Technologies </p>
+      </p>
+        <script>
+            document.write("Last Modified: "+ document.lastModified);
+         </script>
+    <footer>
+    <br>
+  </body>
+<script type="text/javascript">
+    var username = localStorage.getItem("username");
+    document.getElementById("user").innerHTML = "Welcome " + username + "!";
+    var resetValue = "";
+    //localStorage.setItem("username", resetValue);
+    //alert(username);
+
+    function injectorReview(){
+        var rating = document.getElementById('rating').value;
+        var comment = document.getElementById('comment').value;
+
+        //alert(rating + " Inside injectorReview " + comment);
+        document.getElementById('reviewDiv').innerHTML="<div style='Background-color: white;'><p><strong>Rating:</strong> "+rating+"/5</p><br><p>"+comment+"</p><br><p><strong>Submited by:</strong> "+username+"</p><br></div>";
+    }
+
+    var data;
+    function getanswer(q){
+
+    var hide = document.getElementById('imagePeak');
+    hide.style.display = "none";
+
+    $.get("https://www.omdbapi.com/?s="+q+"&apikey=3a5efff2", function(rawdata){
+    var rawstring =JSON.stringify(rawdata);
+    data =JSON.parse(rawstring);
+    //console.log(data);
+    var title = data.Search[0].Title;
+    var year = data.Search[0].Year;
+    var rated = data.Search[0].Rated;
+    var genre = data.Search[0].Genre;
+    var runtime = data.Search[0].Runtime;
+    var director = data.Search[0].Director;
+    var imdburl="https://www.imdb.com/title/"+data.Search[0].imdbID+"/";
+
+    var posterurl =data.Search[0].Poster;
+
+    document.getElementById('answer').innerHTML="<div class = 'movieDisplayContainer'><h1 style='padding-top: 2%; padding-bottom: 2%; color: white;'><strong>"+title+"</strong></h1><div class='movieDisplayMid'><table><tr><td rowspan='2'><img src= '"+posterurl+"' width='60%'></td><td><p style='font-size: 150%;'><strong>Year Released: </strong>"+year+"</p></td></tr><tr><td><p style='font-size: 150%;'><strong>IMDB Page: </strong><a href='"+imdburl+"'target='_blank'>"+imdburl+"</a></p></td></tr></table><br><br><br><button class='btn btn-primary btn-block' id='addReview' data-toggle='modal' data-target='#reviewWindow'>Add Review</button><br><h3>Reviews:</h3><hr><p><strong>Rating:</strong> 3/5</p><br><p>I thought the movie was okay but there are better movies out there for sure.</p><br><p><strong>Submited by:</strong> ZColl</p><hr><br><p><strong>Rating:</strong> 4/5</p><br><p>This movie was weird but awesome.</p><br><p><strong>Submited by:</strong> ARob</p><hr><br><div id='reviewDiv'> </div></div></div>"; });
+    }
+
+    var data;
+    function getImage(q){
+
+    var hide = document.getElementById('imagePeak');
+    hide.style.display = "block";
+
+    $.get("https://www.omdbapi.com/?s="+q+"&apikey=ba1f4581", function(rawdata){
+    rawstring =JSON.stringify(rawdata);
+    data =JSON.parse(rawstring);
+    title = data.Search[0].Title;
+    year = data.Search[0].Year;
+    imdburl="https://www.imdb.com/title/"+data.Search[0].imdbID+"/";
+
+    var posterurl =data.Search[0].Poster;
+    document.getElementById('imagePeak').innerHTML="<img src= '"+posterurl+"' width='25%'><br>"; });
+    }
+</script>
+
+</html>
